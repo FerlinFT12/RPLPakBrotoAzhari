@@ -3,7 +3,7 @@ include '../connection.php';
 include '../function.php';
 
 // ambil artikel yang mau di edit
-$id_menu = $_GET['id_menu'];
+$id_menu = $_GET["id_menu"];
 $query = "SELECT * FROM menu WHERE id_menu = $id_menu";
 
 $hasil = mysqli_query($db, $query);
@@ -12,14 +12,10 @@ $data_menu = mysqli_fetch_assoc($hasil);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
+    <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Edit Resep</title>
     <link rel="stylesheet" href="../css/style.css">
-
     <script type="text/javascript" src="../js/jquery.js"></script>
-
 </head>
 
 <body>
@@ -28,8 +24,8 @@ $data_menu = mysqli_fetch_assoc($hasil);
         <h4>Restoran Pak Broto Azhari</h4>
 
         <?php
-        activeresep();
-        $query = "SELECT * from menu";
+        activemenu();
+        $query = "SELECT * FROM menu";
         $result = mysqli_query($db, $query);
         $querybahanbaku = "SELECT * FROM bahan_baku";
         $hasilbahanbaku = mysqli_query($db, $querybahanbaku);
@@ -78,21 +74,10 @@ $data_menu = mysqli_fetch_assoc($hasil);
                     </select>
                 </p>
                 <p>
-                    <a href="" class="tombol-simpan" style="background: #232323;padding: 10px 10px;color: #fff;">Simpan</a>
+                    <button type="submit" class="btn btn-submit" style="background: #232323;padding: 10px 10px;color: #fff;">Simpan</button>
                     <input type="reset" class="btn btn-submit" value="Reset">
                 </p>
             </form>
-
-
-            <?php
-            include '../connection.php';
-
-            $id_menu = $_GET['id_menu'];
-            $query = "SELECT * FROM menu WHERE id_menu = $id_menu";
-            $hasil = mysqli_query($db, $query);
-            $data_menu = mysqli_fetch_assoc($hasil);
-
-            ?>
             <table class="data tampildata">
                 <tr>
                     <th>No</th>
@@ -102,7 +87,7 @@ $data_menu = mysqli_fetch_assoc($hasil);
                     <th>Aksi</th>
                 </tr>
                 <?php
-                $data = mysqli_query($db, "SELECT * FROM resep,bahan_baku WHERE resep.id_bahanbaku=bahan_baku.id_bahanbaku AND id_menu='$id_menu'");
+                $data = mysqli_query($db, "SELECT * FROM resep,bahan_baku,menu WHERE resep.id_bahanbaku=bahan_baku.id_bahanbaku AND resep.id_menu=menu.id_menu AND menu.id_menu='$id_menu'");
                 $no = 1;
                 while ($row = mysqli_fetch_assoc($data)) {
                 ?>

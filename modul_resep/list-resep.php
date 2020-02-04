@@ -18,7 +18,7 @@ include 'proses-list-menu.php';
         <h4>Restoran Pak Broto Azhari</h4>
 
         <?php
-          activeresep();
+            activemenu();
         ?>
 
 
@@ -53,8 +53,7 @@ include 'proses-list-menu.php';
                     <td><?php echo $menu['harga_menu'] ?></td>
                     <td><?php echo $menu['jenis_menu'] ?></td>
                     <td>
-                        <a href="edit-resep.php?id_menu=<?php echo $menu['id_menu']; ?>" class="btn btn-edit">Detail</a>
-                        <a href="delete-menu.php?id_menu=<?php echo $menu['id_menu']; ?>" class="btn btn-hapus" onclick="return confirm('anda yakin akan menghapus data?');">Hapus</a>
+                        <a href="edit-resep.php?id_menu=<?php echo $menu['id_menu']; ?>" class="btn btn-edit">Edit</a>
                     </td>
                 </tr>
                 <?php  endforeach ?>

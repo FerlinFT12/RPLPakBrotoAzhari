@@ -17,7 +17,7 @@ include 'proses-list-bahanbaku.php';
         <h4>Restoran Pak Broto Azhari</h4>
 
         <?php
-          activebahan();
+            activebahan();
         ?>
 
 
@@ -43,6 +43,7 @@ include 'proses-list-bahanbaku.php';
                     <th style="text-align: left; width: 20%;">No</th>
                     <th style="text-align: left; width: 20%;">Nama Bahan Baku</th>
                     <th style="text-align: left; width: 20%;">Stok</th>
+                    <th style="text-align: left; width: 20%;">Status</th>
                     <th style="text-align: left; width: 20%;">Keterangan</th>
                 </tr>
                 <?php $no=1; ?>
@@ -51,6 +52,19 @@ include 'proses-list-bahanbaku.php';
                     <td><?php echo $no++; ?></td>
                     <td><?php echo $bahanbaku['nama_bahanbaku'] ?></td>
                     <td><?php echo $bahanbaku['stok'] ?></td>
+                    <td>
+                        <?php
+                        if ($bahanbaku['stok'] < 5) {
+                            echo "Persediaan Hampir Habis";
+                        } else if ($bahanbaku['stok'] < 20) {
+                            echo "Stok Persediaan Menipis";
+                        }
+                        else {
+                            echo "Tersedia";
+                        }
+                    ?>
+                    </td>
+
                     <td>
                         <a href="edit-bahanbaku.php?id_bahanbaku=<?php echo $bahanbaku['id_bahanbaku']; ?>" class="btn btn-edit">Edit</a>
                         <a href="delete-bahanbaku.php?id_bahanbaku=<?php echo $bahanbaku['id_bahanbaku']; ?>" class="btn btn-hapus" onclick="return confirm('anda yakin akan menghapus data?');">Hapus</a>

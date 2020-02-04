@@ -44,8 +44,9 @@ function activebahan(){
 function activemenu(){
     echo '<div class="sidebar">
     <ul>
+        <li><a href="../modul_pemesanan/daftar-pesanan.php">Daftar Pemesanan</a></li>
         <li><a href="../modul_menu/list-bahanbaku.php">Bahan Baku</a></li>
-        <li><a class="active" href="../modul_menu/list-menu.php">Menu</a></li>
+        <li><a href="../modul_menu/list-menu.php">Menu</a></li>
         <li><a href="../modul_resep/list-resep.php">Resep</a></li>
         <li><a href="../logout.php" onclick="return confirm("anda yakin akan keluar?")">Logout</a></li>
     </ul>
@@ -59,9 +60,7 @@ function activepemesanan(){
     echo '<div class="sidebar">
     <ul>
         <li><a href="../modul_pemesanan/list-menu.php">Menu</a></li>
-        <li><a href="../modul_resep/list-resep.php">Resep</a></li>
         <li><a class="active" href="../modul_pemesanan/pemesanan-data.php"">Pemesanan</a></li>
-        <li><a href="../modul_kuesioner/list-kuesioner.php">Kuesioner</a></li>
         <li><a href="../logout.php" onclick="return confirm("anda yakin akan keluar?")">Logout</a></li>
     </ul>
 </div>

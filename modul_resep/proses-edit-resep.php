@@ -11,8 +11,7 @@ $query = "INSERT INTO resep (id_menu, id_bahanbaku, satuan, jumlah) VALUES ('$id
 $hasil = mysqli_query($db, $query);
 
 if ($hasil == true) {
-
-    header('Location: list-resep.php');
+    header('Location: edit-resep.php?id_menu='.$id_menu);
 } else {
 	$_SESSION['messages'] = '<font color="red">Tambah Resep Gagal!</font>';
     header('Location: edit-resep.php');

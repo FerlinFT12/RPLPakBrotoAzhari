@@ -206,7 +206,9 @@ $data_detail[] = $row;
                                         <p><input type="hidden" name="no_pesanan" value="<?php echo $no_pesanan; ?>"></p>
                                 <?php } ?>
                                 <p><input type="hidden" name="no_meja" value="<?php echo $data_pesan['no_meja']; ?>"></p>
+
                                 <p><input type="hidden" name="id_menu" value="1" ></p>
+                                <a href="edit-form-pelanggan.php?no_pesanan=<?php echo $no_pesanan?>" class="btn btn-hapus">Edit Menu</a> 
                                 <p><input type="submit" class="btn btn-hapus" value="Hapus"></p> 
                             </form>
                          </td>
