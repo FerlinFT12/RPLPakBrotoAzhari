@@ -46,8 +46,8 @@ date_default_timezone_set('Asia/Jakarta');
                     <th style="text-align: left; width: 4%;">Waktu Pemesanan</th>
                     <th style="text-align: left; width: 4%;">Waktu Pembayaran</th>
                     <th style="text-align: left; width: 5%;">Status</th>
-                    <th style="text-align: right; width: 4%;">Aksi</th>
-                    <th style="text-align: left; width: 5%;"></th>
+                    <th style="text-align: left; width: 10%;">Aksi</th>
+
                 </tr>
                 <?php foreach ($data_pesan as $pesan) : ?>
                 <tr>
@@ -81,16 +81,13 @@ date_default_timezone_set('Asia/Jakarta');
                          <a  href="../modul_pemesanan/detail-pemesanan.php?no_pesanan=<?php echo $pesan['no_pesanan']; ?>" class="btn btn-edit" title="klik untuk proses pengembalian">Detail</a>
                         <?php if (empty($pesan['waktu_bayar'])) {?>
                         
-                            <a  href="../modul_pemesanan/edit-pemesanan.php?no_pesanan=<?php echo $pesan['no_pesanan']; ?>" class="btn btn-tambah" title="klik untuk proses pengembalian">Edit</a>
+                            <a  href="../modul_pemesanan/edit-pemesanan.php?no_pesanan=<?php echo $pesan['no_pesanan']; ?>" class="btn btn-tambah" title="klik untuk proses pengembalian">Edit Pesanan</a>
                         <?php }else{ ?>
                         <?php } ?>
-                           
-                    </td>
-                    <td style="text-align: left;">
-                        
-                        <?php if (empty($pesan['waktu_bayar'])): ?>
-                            <a align="left"  href="../modul_pembayaran/pembayaran.php?no_pesanan=<?php echo $pesan['no_pesanan']; ?>" class="btn btn-hapus" title="klik untuk proses pengembalian">Bayar</a>
-                        <?php endif ?>
+                        <!-- Untuk Pembayaran -->                           
+                        <?php //if (empty($pesan['waktu_bayar'])): ?>
+                            <!-- <a align="left"  href="../modul_pembayaran/pembayaran.php?no_pesanan=<?php //echo $pesan['no_pesanan']; ?>" class="btn btn-hapus" title="klik untuk proses pengembalian">Bayar</a> -->
+                        <?php //endif ?>
                     </td>
                 </tr>
 

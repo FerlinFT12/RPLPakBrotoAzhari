@@ -10,7 +10,7 @@ $nama_pelanggan = @$_POST['nama_pelanggan'];
 $id_detail = @$_GET['id_detail'];
 $id_meja = @$_POST['id_meja'];
 $no_meja = @$_POST['no_meja'];
-$jumlah_pesan = @$_POST['jumlah_pesan'];
+@$jumlah_pesan = $_POST['jumlah_pesan'];
 $no_pesanan = @$_POST['no_pesanan'];
 $no_pesan = @$_POST['no_pesanan'];
 
@@ -28,8 +28,8 @@ $tgl = date("Y-m-d h:i:s");
 $query = "SELECT * FROM `menu` WHERE id_menu = $id_menu";
 $hasil = mysqli_query($db, $query);
 @$data_harga = mysqli_fetch_assoc($hasil);
-$totharga = $data_harga['harga_menu'] * $jumlah_pesan; 
-
+$totharga = 0;
+$totharga = intval($data_harga['harga_menu']) * intval($jumlah_pesan); 
 
 $qurut = "SELECT max(no_pesanan) as maxno_pesanan FROM pesanan";
 $hasil = mysqli_query($db,$qurut);
@@ -40,10 +40,6 @@ $no_urut = (int) substr($max, 3, 3);
 $no_urut++;
 
 $newID = $max + $no_urut;
-
-
- 
-
 
 if (!$id_menu) {
     $qtambahd = "INSERT INTO `detail_pesanan` (`no_pesanan`, `id_menu`, `jumlah`, `total_harga`) 
@@ -200,7 +196,6 @@ $data_detail[] = $row;
                             <form action="pemesanan-form-pelanggan.php?id_detail=<?php echo $detail['id_detailpesanan']; ?>" method="post">
                                 <p><input type="hidden" name="nama_pelanggan" value="<?php echo $data_pesan['nama_pelanggan'] ?>"></p>
                                <?php if (!$no_pesanan) {?>
-
                                         <p><input type="hidden" name="no_pesanan" value="<?php echo $no_pesan; ?>"></p>
                                 <?php }else{ ?>
                                         <p><input type="hidden" name="no_pesanan" value="<?php echo $no_pesanan; ?>"></p>

@@ -44,7 +44,6 @@ include 'proses-list-menu.php';
                     <th style="text-align: left; width: 20%;">Nama Menu</th>
                     <th style="text-align: left; width: 10%;">Harga</th>
                     <th style="text-align: left; width: 10%;">Jenis</th>
-                    <th style="text-align: left; width: 20%;">Keterangan</th>
                 </tr>
                 <?php $no=1; ?>
                 <?php foreach ($data_menu as $menu) : ?>
@@ -53,10 +52,6 @@ include 'proses-list-menu.php';
                     <td><?php echo $menu['nama_menu'] ?></td>
                     <td><?php echo $menu['harga_menu'] ?></td>
                     <td><?php echo $menu['jenis_menu'] ?></td>
-                    <td>
-                        <a href="edit-menu.php?id_menu=<?php echo $menu['id_menu']; ?>" class="btn btn-edit">Edit</a>
-                        <a href="delete-menu.php?id_menu=<?php echo $menu['id_menu']; ?>" class="btn btn-hapus" onclick="return confirm('anda yakin akan menghapus data?');">Hapus</a>
-                    </td>
                 </tr>
                 <?php  endforeach ?>
             </table>
