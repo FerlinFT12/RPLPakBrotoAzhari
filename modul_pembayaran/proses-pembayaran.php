@@ -31,8 +31,7 @@ if ($hasil == true) {
     // tambah_stok($db, $buku_id);
     // tambah stok
 
-    $_SESSION['messages'] = '<font color="green">Pengembalian buku sukses!</font>';
-    header('Location: ../modul_pemesanan/pemesanan-data.php');
+    header('Location: ../modul_pembayaran/pemesanan-data.php');
 } else {
     header('Location: pengembalian.php');
 }

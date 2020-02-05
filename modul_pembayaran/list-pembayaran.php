@@ -21,7 +21,7 @@ include 'proses-list-pembayaran.php';
         ?>
 
         <div class="content">
-            <h1>Daftar Pebayaran</h1>
+            <h1>Daftar Pembayaran</h1>
             <?php  
             // Check message ada atau tidak
             if(!empty($_SESSION['messages'])) {

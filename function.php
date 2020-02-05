@@ -83,8 +83,8 @@ function activeresep(){
 function activepembayaran(){
     echo '<div class="sidebar">
     <ul>
-        <li><a href="../modul_pemesanan/pemesanan-data.php"">Pemesanan</a></li>
-        <li><a class="active" href="../modul_pembayaran/list-pembayaran.php">Pembayaran</a></li>
+        <li><a href="../modul_pembayaran/pemesanan-data.php"">Pemesanan</a></li>
+        <li><a href="../modul_pembayaran/list-pembayaran.php">Pembayaran</a></li>
         <li><a href="../modul_kuesioner/list-kuesioner.php">Kuesioner</a></li>
         <li><a href="../logout.php" onclick="return confirm("anda yakin akan keluar?")">Logout</a></li>
     </ul>

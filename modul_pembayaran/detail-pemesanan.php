@@ -2,30 +2,10 @@
 // ... ambil data dari database
 include '../function.php';
 include '../modul_menu/proses-list-menu.php';
-date_default_timezone_set('Asia/Jakarta');
+$no_pesanan = $_GET['no_pesanan'];
 
-$no_pesanan = @$_GET['no_pesanan'];
-$nomor = @$_POST['nomor'];
-$bayar = @$_POST['bayar'];
-$tgl_bayar = date("Y-m-d h:i:s");
 
-// var_dump($bayar);
-// var_dump($nomor);
-//  var_dump($no_pesanan);
-
- if (!$no_pesanan) {
-$qpesan = "SELECT pesanan.*, meja.no_meja FROM `pesanan` JOIN meja ON meja.id_meja = pesanan.id_meja WHERE no_pesanan = $nomor";
-$hasilpesan = mysqli_query($db,$qpesan);
-$data_pesan = mysqli_fetch_assoc($hasilpesan);    
-
-$querydetail = "SELECT detail_pesanan.*, menu.id_menu, menu.nama_menu, menu.harga_menu FROM `detail_pesanan` JOIN menu ON detail_pesanan.id_menu = menu.id_menu WHERE detail_pesanan.no_pesanan = $nomor";
-$hasil = mysqli_query($db, $querydetail);
-$data_detail = array();
-while ($row = mysqli_fetch_assoc($hasil)) {
-$data_detail[] = $row;
-}
-
-}else{
+ 
 
 $qpesan = "SELECT pesanan.*, meja.no_meja FROM `pesanan` JOIN meja ON meja.id_meja = pesanan.id_meja WHERE no_pesanan = $no_pesanan";
 $hasilpesan = mysqli_query($db,$qpesan);
@@ -43,14 +23,14 @@ $data_detail = array();
 // ... tiap baris dari hasil query dikumpulkan ke $data_anggota
 while ($row = mysqli_fetch_assoc($hasil)) {
 $data_detail[] = $row;
-}
+
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Form Pembayaran</title>
+    <title>Form Pemesanan</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -62,7 +42,7 @@ $data_detail[] = $row;
           activepembayaran();
         ?>
         <div class="content">
-            <h3>Form Pembayaran</h3>
+            <h3>Detail Pemesanan</h3>
             <?php
             // Check message ada atau tidak
             if(!empty($_SESSION['messages'])) {
@@ -113,19 +93,9 @@ $data_detail[] = $row;
                 </table>
                 <table class="data">
                     <tr>
-                        <?php 
-                        if (!$no_pesanan) {
-                            $querysum = "select sum(total_harga) as grand_total from detail_pesanan WHERE detail_pesanan.no_pesanan = $nomor";
+                        <?php $querysum = "select sum(total_harga) as grand_total from detail_pesanan WHERE detail_pesanan.no_pesanan = $no_pesanan";
                                 $hasilsum = mysqli_query($db, $querysum);
                                 @$grand_total = mysqli_fetch_assoc($hasilsum);
-                                $Kembalian = $bayar - $grand_total['grand_total']; 
-                        }else {
-                                $querysum = "select sum(total_harga) as grand_total from detail_pesanan WHERE detail_pesanan.no_pesanan = $no_pesanan";
-                                $hasilsum = mysqli_query($db, $querysum);
-                                @$grand_total = mysqli_fetch_assoc($hasilsum);
-
-                                $Kembalian = $bayar - $grand_total['grand_total']; 
-                         }
                          ?>
                         <th style="text-align: left; width: 20%"></th>
                         <th style="text-align: left; width: 20%"></th>
@@ -134,31 +104,9 @@ $data_detail[] = $row;
                     </tr>
                 </table>
 
-               
-                        
-                        <?php if (!$bayar) {?>
-                    <form action="pembayaran.php" method="post">
-                        <p><input type="hidden" name="waktu_bayar" value="<?php echo $tgl_bayar ?>"></p>
-                        <p><input type="hidden" name="nomor" value="<?php echo $no_pesanan ?>"></p>
-                        <p>Bayar</p>
-                        <p><input type="number" name="bayar" min="<?php echo $grand_total['grand_total']; ?>"></p>
-                        <p><input type="submit" class="btn btn-tambah" value="Bayar"></p> 
-                    </form>
-
-                        <?php }else{ ?>
-                    <form action="proses-pembayaran.php" method="post">
-                        <p><input type="hidden" name="waktu_bayar" value="<?php echo $tgl_bayar ?>"></p>
-                        <p><input type="hidden" name="nomor" value="<?php echo $nomor?>"></p>
-                        <p>Bayar</p>
-                        <p><input type="hidden" name="bayar" value="<?php echo $bayar; ?>"></p>
-                        <p><input type="text" value="<?php echo $bayar; ?> " disabled></p>
-                        <p>Kembalian</p>
-                        <p><input type="hidden" name="kembalian" value="<?php echo $Kembalian; ?>"></p>
-                        <p><input type="number" name="kembalian" value="<?php echo $Kembalian; ?>" disabled></p>
-                         <p><input type="submit" class="btn btn-tambah" value="Simpan"></p> 
-                    </form>
-
-                        <?php } ?>
+               <form action="pemesanan-data.php">
+                     <p><input type="submit" class="btn btn-tambah" value="Kembali"></p> 
+                </form>
 
         </div>
     </div>
