@@ -4,9 +4,6 @@ include '../function.php';
 include '../modul_menu/proses-list-menu.php';
 $no_pesanan = $_GET['no_pesanan'];
 
-
- 
-
 $qpesan = "SELECT pesanan.*, meja.no_meja FROM `pesanan` JOIN meja ON meja.id_meja = pesanan.id_meja WHERE no_pesanan = $no_pesanan";
 $hasilpesan = mysqli_query($db,$qpesan);
 $data_pesan = mysqli_fetch_assoc($hasilpesan);    

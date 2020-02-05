@@ -13,6 +13,11 @@ while ($row = mysqli_fetch_assoc($hasil)) {
     $data_bayar[] = $row;
 }
 
+$query2 = "SELECT pembayaran.* ,pesanan.* FROM `pembayaran` JOIN pesanan ON pembayaran.no_pesanan = pesanan.no_pesanan ORDER BY `pembayaran`.`no_pesanan` ASC ";
+
+$hasil2 = mysqli_query($db, $query2);
+
+
 // ... lanjut di tampilan
 
 

@@ -54,7 +54,7 @@ include 'proses-list-pembayaran.php';
             <?php endif ?>
             <br>
             <div class="btn-tambah-div">
-                <a href="tambah-menu.php"><button class="btn btn-tambah" style="right: 964px;">Rekap</button></a>
+                <a href="rekap-list-pembayaran.php"><button class="btn btn-tambah" style="right: 964px;">Rekap</button></a>
             </div>
         </div>
 
