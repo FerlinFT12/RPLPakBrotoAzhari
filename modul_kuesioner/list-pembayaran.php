@@ -17,7 +17,7 @@ include 'proses-list-pembayaran.php';
         <h4>Restoran Pak Broto Azhari</h4>
 
         <?php
-            activepembayaran();
+            activekuesioner();
         ?>
 
         <div class="content">

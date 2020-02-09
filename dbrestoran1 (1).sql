@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 03 Feb 2020 pada 07.53
+-- Generation Time: 09 Feb 2020 pada 17.29
 -- Versi Server: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -67,17 +67,13 @@ CREATE TABLE `detail_pesanan` (
 --
 
 INSERT INTO `detail_pesanan` (`id_detailpesanan`, `no_pesanan`, `id_menu`, `jumlah`, `total_harga`) VALUES
-(278, 1, 10, 2, 80000),
-(279, 1, 13, 2, 20000),
-(281, 1, 12, 1, 8000),
-(284, 2, 9, 2, 30000),
-(285, 2, 14, 2, 10000),
-(288, 3, 9, 2, 30000),
-(289, 3, 9, 2, 30000),
-(293, 4, 10, 3, 120000),
-(294, 4, 13, 4, 40000),
-(300, 6, 9, 1, 15000),
-(301, 6, 14, 1, 5000);
+(720, 16, 14, 10, 50000),
+(721, 16, 15, 3, 45000),
+(722, 16, 13, 5, 50000),
+(723, 15, 13, 10, 100000),
+(724, 14, 9, 5, 75000),
+(727, 14, 14, 5, 25000),
+(730, 17, 11, 2, 50000);
 
 -- --------------------------------------------------------
 
@@ -88,10 +84,20 @@ INSERT INTO `detail_pesanan` (`id_detailpesanan`, `no_pesanan`, `id_menu`, `juml
 CREATE TABLE `kuesioner` (
   `id_kuesioner` int(11) NOT NULL,
   `no_pembayaran` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
-  `pertanyaan` text NOT NULL,
-  `nilai` int(11) NOT NULL
+  `id_pertanyaan` int(11) NOT NULL,
+  `nilai` int(11) NOT NULL,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kuesioner`
+--
+
+INSERT INTO `kuesioner` (`id_kuesioner`, `no_pembayaran`, `id_pertanyaan`, `nilai`, `id`) VALUES
+(4, 18, 1, 5, 5),
+(5, 18, 2, 4, 5),
+(6, 20, 2, 3, 5),
+(7, 20, 1, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -143,7 +149,8 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga_menu`, `jenis_menu`, `id`) VA
 (11, 'Ayam Panggang ', 25000, 'Ayam', 1),
 (12, 'Sop Buntut ', 8000, 'Sup', 1),
 (13, 'Jus Alpukat ', 10000, 'Seafood', 1),
-(14, 'Kopi Hitam ', 5000, 'Seafood', 1);
+(14, 'Kopi Hitam ', 5000, 'Seafood', 1),
+(15, 'Soto Ayam ', 15000, 'Sayuran', 2);
 
 -- --------------------------------------------------------
 
@@ -166,7 +173,8 @@ INSERT INTO `pegawai` (`id`, `username`, `password`, `bagian`) VALUES
 (1, 'andri', 'andri123', 'pelayan'),
 (2, 'rudiansyaht', 'rudi1234567890', 'koki'),
 (3, 'jinggasurya', 'putihkelabu', 'pantry'),
-(4, 'heriansyahp', 'heriansyahputra', 'kasir');
+(4, 'heriansyahp', 'heriansyahputra', 'kasir'),
+(5, 'rudiwibowo', 'rudiwibowo123', 'cs');
 
 -- --------------------------------------------------------
 
@@ -187,7 +195,30 @@ CREATE TABLE `pembayaran` (
 
 INSERT INTO `pembayaran` (`no_pembayaran`, `no_pesanan`, `waktu_bayar`, `bayar`) VALUES
 (18, 1, '2020-02-02 18:10:20', 108000),
-(19, 6, '2020-02-02 18:34:13', 20000);
+(19, 6, '2020-02-02 18:34:13', 20000),
+(20, 16, '2020-02-05 05:46:45', 145000),
+(22, 15, '2020-02-05 05:52:29', 100000),
+(23, 14, '2020-02-05 05:57:07', 100000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `pertanyaan`
+--
+
+CREATE TABLE `pertanyaan` (
+  `id_pertanyaan` int(11) NOT NULL,
+  `nama_pertanyaan` varchar(100) NOT NULL,
+  `id_pegawai` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pertanyaan`
+--
+
+INSERT INTO `pertanyaan` (`id_pertanyaan`, `nama_pertanyaan`, `id_pegawai`) VALUES
+(1, 'Bagaimana Pelayanan di Restoran Pak Broto Azhari ?', 5),
+(2, 'Bagaimana Rasa Menu yang disediakan di Restoran Pak Broto Azhari ?', 5);
 
 -- --------------------------------------------------------
 
@@ -212,7 +243,18 @@ INSERT INTO `pesanan` (`no_pesanan`, `id_meja`, `waktu_pesanan`, `nama_pelanggan
 (3, 3, '2020-02-02 18:07:43', 'Devi'),
 (4, 5, '2020-02-03 01:21:26', 'Susi'),
 (5, 2, '2020-02-02 18:30:19', 'ferlin'),
-(6, 2, '2020-02-02 18:30:39', 'ferlin');
+(6, 2, '2020-02-02 18:30:39', 'ferlin'),
+(7, 8, '2020-02-04 00:05:50', 'Asri'),
+(8, 5, '2020-02-04 00:11:24', 'Reno'),
+(9, 7, '2020-02-04 00:20:56', 'Eno'),
+(10, 4, '2020-02-04 00:28:14', 'Moni'),
+(11, 1, '2020-02-04 00:45:19', 'Ani'),
+(12, 6, '2020-02-04 00:53:45', 'Mika'),
+(13, 1, '2020-02-04 00:57:32', 'Lewis'),
+(14, 4, '2020-02-04 01:00:58', 'Lan'),
+(15, 1, '2020-02-04 01:03:01', 'Rini'),
+(16, 9, '2020-02-04 01:04:40', 'Sosroan'),
+(17, 6, '2020-02-09 05:37:40', 'Aray');
 
 -- --------------------------------------------------------
 
@@ -226,6 +268,18 @@ CREATE TABLE `resep` (
   `satuan` varchar(20) NOT NULL,
   `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `resep`
+--
+
+INSERT INTO `resep` (`id_menu`, `id_bahanbaku`, `satuan`, `jumlah`) VALUES
+(15, 10, 'biji', 5),
+(15, 12, 'biji', 4),
+(15, 11, 'biji', 2),
+(15, 13, 'biji', 1),
+(15, 8, 'Sendok', 50),
+(9, 9, 'Sendok', 5);
 
 --
 -- Indexes for dumped tables
@@ -252,7 +306,8 @@ ALTER TABLE `detail_pesanan`
 ALTER TABLE `kuesioner`
   ADD PRIMARY KEY (`id_kuesioner`),
   ADD KEY `id` (`id`),
-  ADD KEY `no_pembayaran` (`no_pembayaran`);
+  ADD KEY `no_pembayaran` (`no_pembayaran`),
+  ADD KEY `id_pertanyaan` (`id_pertanyaan`);
 
 --
 -- Indexes for table `meja`
@@ -279,6 +334,13 @@ ALTER TABLE `pegawai`
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`no_pembayaran`),
   ADD KEY `no_pesanan` (`no_pesanan`);
+
+--
+-- Indexes for table `pertanyaan`
+--
+ALTER TABLE `pertanyaan`
+  ADD PRIMARY KEY (`id_pertanyaan`),
+  ADD KEY `id_pegawai` (`id_pegawai`);
 
 --
 -- Indexes for table `pesanan`
@@ -308,13 +370,13 @@ ALTER TABLE `bahan_baku`
 -- AUTO_INCREMENT for table `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
-  MODIFY `id_detailpesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=303;
+  MODIFY `id_detailpesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=731;
 
 --
 -- AUTO_INCREMENT for table `kuesioner`
 --
 ALTER TABLE `kuesioner`
-  MODIFY `id_kuesioner` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kuesioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `meja`
@@ -326,25 +388,31 @@ ALTER TABLE `meja`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `no_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `no_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `pertanyaan`
+--
+ALTER TABLE `pertanyaan`
+  MODIFY `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `no_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `no_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -360,14 +428,16 @@ ALTER TABLE `bahan_baku`
 -- Ketidakleluasaan untuk tabel `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
-  ADD CONSTRAINT `detail_pesanan_ibfk_1` FOREIGN KEY (`no_pesanan`) REFERENCES `pesanan` (`no_pesanan`);
+  ADD CONSTRAINT `detail_pesanan_ibfk_1` FOREIGN KEY (`no_pesanan`) REFERENCES `pesanan` (`no_pesanan`),
+  ADD CONSTRAINT `detail_pesanan_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`) ON DELETE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `kuesioner`
 --
 ALTER TABLE `kuesioner`
   ADD CONSTRAINT `kuesioner_ibfk_1` FOREIGN KEY (`id`) REFERENCES `pegawai` (`id`),
-  ADD CONSTRAINT `kuesioner_ibfk_2` FOREIGN KEY (`no_pembayaran`) REFERENCES `pembayaran` (`no_pembayaran`) ON DELETE CASCADE;
+  ADD CONSTRAINT `kuesioner_ibfk_2` FOREIGN KEY (`no_pembayaran`) REFERENCES `pembayaran` (`no_pembayaran`) ON DELETE CASCADE,
+  ADD CONSTRAINT `kuesioner_ibfk_3` FOREIGN KEY (`id_pertanyaan`) REFERENCES `pertanyaan` (`id_pertanyaan`) ON DELETE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `menu`
@@ -380,6 +450,12 @@ ALTER TABLE `menu`
 --
 ALTER TABLE `pembayaran`
   ADD CONSTRAINT `pembayaran_ibfk_2` FOREIGN KEY (`no_pesanan`) REFERENCES `pesanan` (`no_pesanan`);
+
+--
+-- Ketidakleluasaan untuk tabel `pertanyaan`
+--
+ALTER TABLE `pertanyaan`
+  ADD CONSTRAINT `pertanyaan_ibfk_1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id`) ON DELETE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `pesanan`

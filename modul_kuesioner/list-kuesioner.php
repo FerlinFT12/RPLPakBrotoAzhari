@@ -8,7 +8,7 @@ include 'proses-list-kuesioner.php';
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Menu</title>
+    <title>Daftar Kuesioner</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -17,12 +17,12 @@ include 'proses-list-kuesioner.php';
         <h4>Restoran Pak Broto Azhari</h4>
 
         <?php
-          activekuesioner();
+            activekuesioner();
         ?>
 
 
         <div class="content">
-            <h1>Daftar Menu</h1>
+            <h1>Data Kuesioner</h1>
             <?php  
             // Check message ada atau tidak
             if(!empty($_SESSION['messages'])) {
@@ -31,7 +31,7 @@ include 'proses-list-kuesioner.php';
             }
             ?>
             <div class="btn-tambah-div">
-                <a href="tambah-kuesioner.php"><button class="btn btn-tambah" style="right: 880px;">Tambah Pertanyaan</button></a>
+                <a href="tambah-kuesioner.php"><button class="btn btn-tambah" style="right: 790px;">Tambah Kuesioner</button></a>
             </div>
             <br>
             <?php if (empty($data_kuesioner)) : ?>
@@ -41,28 +41,27 @@ include 'proses-list-kuesioner.php';
             <table class="data">
                 <tr>
                     <th style="text-align: left; width: 10%;">No</th>
+                    <th style="text-align: left; width: 20%;">No. Pembayaran</th>
                     <th style="text-align: left; width: 20%;">Nama Pelanggan</th>
-                    <th style="text-align: left; width: 10%;">Pertanyaan</th>
                     <th style="text-align: left; width: 10%;">Nilai</th>
                     <th style="text-align: left; width: 20%;">Keterangan</th>
                 </tr>
                 <?php $no=1; ?>
-                <?php foreach ($data_kuesioner as $kuesioner) : ?>
+                <?php foreach ($kuesioner as $kuesioner) : ?>
                 <tr>
                     <td><?php echo $no++; ?></td>
-                    <td><?php echo $kuesioner['nama_pelanggan'] ?></td>
-                    <td><?php echo $kuesioner['pertanyaan'] ?></td>
-                    <td><?php echo $kuesioner['nilai'] ?></td>
+                    <td><?php echo $kuesioner['no_pesanan']; ?></td>
+                    <td><?php echo $kuesioner['nama_pelanggan']; ?></td>
+                    <td><?php echo $kuesioner['nilai']; ?></td>
                     <td>
                         <a href="edit-kuesioner.php?id_kuesioner=<?php echo $kuesioner['id_kuesioner'] ?>" class="btn btn-edit">Edit</a>
-                        <a href="delete-menu.php?id_menu=" class="btn btn-hapus" onclick="return confirm('anda yakin akan menghapus data?');">Hapus</a>
+                        <a href="delete-kuesioner.php?id_kuesioner=" class="btn btn-hapus" onclick="return confirm('anda yakin akan menghapus data?');">Hapus</a>
                     </td>
                 </tr>
                 <?php  endforeach ?>
             </table>
             <?php endif ?>
         </div>
-
     </div>
 </body>
 </html>

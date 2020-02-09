@@ -13,6 +13,6 @@ if ($hasil == true) {
 
     header('Location: list-menu.php');
 } else {
-	$_SESSION['messages'] = '<font color="red">Tambah Bahan Baku Gagal!</font>';
+	$_SESSION['messages'] = '<font color="red">Tambah Menu Gagal!</font>';
     header('Location: tambah-menu.php');
 }

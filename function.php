@@ -85,7 +85,6 @@ function activepembayaran(){
     <ul>
         <li><a href="../modul_pembayaran/pemesanan-data.php"">Pemesanan</a></li>
         <li><a href="../modul_pembayaran/list-pembayaran.php">Pembayaran</a></li>
-        <li><a href="../modul_kuesioner/list-kuesioner.php">Kuesioner</a></li>
         <li><a href="../logout.php" onclick="return confirm("anda yakin akan keluar?")">Logout</a></li>
     </ul>
 </div>
@@ -94,8 +93,21 @@ function activepembayaran(){
 function activekuesioner(){
     echo '<div class="sidebar">
     <ul>
-        <li><a href="../modul_pembayaran/list-pembayaran.php">Pembayaran</a></li>
-        <li><a class="active" href="../modul_kuesioner/list-kuesioner.php">Kuesioner</a></li>
+        <li><a href="../modul_kuesioner/list-pembayaran.php">Pembayaran</a></li>
+        <li><a href="../modul_pertanyaan/list-pertanyaan.php">Pertanyaan</a></li>
+        <li><a href="../modul_kuesioner/list-kuesioner.php">Kuesioner</a></li>
+        <li><a href="../logout.php" onclick="return confirm("anda yakin akan keluar?")">Logout</a></li>
+    </ul>
+</div>';
+}
+
+//Modul Pertanyaan
+function activepertanyaan(){
+    echo '<div class="sidebar">
+    <ul>
+        <li><a href="../modul_kuesioner/list-pembayaran.php">Pembayaran</a></li>
+        <li><a href="../modul_pertanyaan/list-pertanyaan.php">Pertanyaan</a></li>
+        <li><a href="../modul_kuesioner/list-kuesioner.php">Kuesioner</a></li>
         <li><a href="../logout.php" onclick="return confirm("anda yakin akan keluar?")">Logout</a></li>
     </ul>
 </div>';

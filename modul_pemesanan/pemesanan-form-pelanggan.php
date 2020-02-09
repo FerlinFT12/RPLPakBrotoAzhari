@@ -94,7 +94,7 @@ $data_detail[] = $row;
         <h4>Restoran Pak Broto Azhari</h4>
 
         <?php
-          activepemesanan();
+            activepemesanan();
         ?>
         <div class="content">
             <h3>Tambah Pemesanan</h3>
@@ -133,7 +133,7 @@ $data_detail[] = $row;
                 </p>
 
                 <p>Pilih Menu</p>
-                 <p><input type="hidden" name="id_menu" value="1" ></p>
+                <p><input type="hidden" name="id_menu" value="1" ></p>
                 <p><input type="hidden" name="jumlah_pesan" ></p>
                 <p><input type="submit" class="btn btn-tambah" value="Simpan"></p>                
                 </form>
@@ -173,7 +173,6 @@ $data_detail[] = $row;
                 <p><input type="submit" class="btn btn-tambah" value="Pilih Menu"></p>                
                 </form>
             <?php } ?>
-               
 
                 <?php if (!$id_menu){ ?>
                     
@@ -189,13 +188,13 @@ $data_detail[] = $row;
                     <?php foreach ($data_detail as $detail) : ?>
                     <tr>
                         <td><?php echo $detail['nama_menu'] ?></td>
-                         <td><?php echo $detail['jumlah'] ?></td>
-                         <td><?php echo $detail['harga_menu'] ?></td>
-                         <td><?php echo $detail['total_harga'] ?></td>
-                          <td>
+                        <td><?php echo $detail['jumlah'] ?></td>
+                        <td><?php echo $detail['harga_menu'] ?></td>
+                        <td><?php echo $detail['total_harga'] ?></td>
+                        <td>
                             <form action="pemesanan-form-pelanggan.php?id_detail=<?php echo $detail['id_detailpesanan']; ?>" method="post">
                                 <p><input type="hidden" name="nama_pelanggan" value="<?php echo $data_pesan['nama_pelanggan'] ?>"></p>
-                               <?php if (!$no_pesanan) {?>
+                                <?php if (!$no_pesanan) {?>
                                         <p><input type="hidden" name="no_pesanan" value="<?php echo $no_pesan; ?>"></p>
                                 <?php }else{ ?>
                                         <p><input type="hidden" name="no_pesanan" value="<?php echo $no_pesanan; ?>"></p>
@@ -206,7 +205,7 @@ $data_detail[] = $row;
                                 <a href="edit-form-pelanggan.php?no_pesanan=<?php echo $no_pesanan?>" class="btn btn-hapus">Edit Menu</a> 
                                 <p><input type="submit" class="btn btn-hapus" value="Hapus"></p> 
                             </form>
-                         </td>
+                        </td>
 
                     </tr>
                     <?php endforeach ?>

@@ -10,7 +10,6 @@ include 'proses-list-menu.php';
     <meta charset="UTF-8">
     <title>Daftar Menu</title>
     <link rel="stylesheet" href="../css/style.css">
-       
 </head>
 <body>
     <div class="container clearfix">
